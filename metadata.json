@@ -1,0 +1,6 @@
+{
+  "name": "ProjectHub",
+  "description": "A secure project management dashboard featuring user-isolated workspaces, real-time sync, and row-level security.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

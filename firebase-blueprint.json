@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "Represents a user-owned project with metadata, status, and description",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "description": "The Firebase Authentication UID of the project owner"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "description": "The title or name of the project"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 2000,
+          "description": "Optional detailed overview or markdown notes for the project"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["planning", "in_progress", "completed", "on_hold"],
+          "description": "Current status stage of the project"
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "urgent"],
+          "description": "Priority tier of the project"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO timestamp or Firestore server timestamp when the project was created"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO timestamp or Firestore server timestamp when the project was last updated"
+        }
+      },
+      "required": ["userId", "name", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Private project documents strictly restricted to their respective owner"
+    }
+  }
+}
